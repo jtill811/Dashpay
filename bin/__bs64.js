@@ -20,5 +20,13 @@ base64.urlDecode = function(encoded) {
     return base64.decode(encoded);
 };
 
+base64.genTextChar = function(_void=String){
+    try {
+        _void = Math.random().toString(36).substring(2,12)
+        return _void
+    } catch (err) {
+        
+    }
+}
 
 module.exports = base64
