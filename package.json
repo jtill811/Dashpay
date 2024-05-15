@@ -4,8 +4,8 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "echo Iniciando App electron \n electron ./app.js",
-    "test": "nodemon index.js"
+    "start": "electron app.js",
+    "test": "nodemon test.js"
   },
   "repository": "https://github.com/jtill811/Dashpay.git",
   "keywords": [
@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "express": "^4.19.2",
-    "qrcode": "^1.5.3"
+    "nedb": "^1.8.0",
+    "qrcode": "^1.5.3",
+    "uuid": "^9.0.1"
   }
 }

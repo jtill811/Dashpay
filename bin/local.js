@@ -11,11 +11,12 @@ const os    = require("os")
 const base64  = require('./__bs64.js') // Encriptacion de Archivos
 // Librerias
 const express = require('express')
+const Router  = express.Router
 // Variables globales
 const app = express()
 // Verificar si hay puerto libre designado
 const port = process.env.PORT || 8080
-const ip   = os.networkInterfaces.apply().Ethernet[1].address
+const ip     = 'http://192.168.0.110'
 // Ejecutar Servidor
 const serverRun = (debug=false,f=()=>{})=>{
     f();
@@ -33,6 +34,14 @@ const serverRun = (debug=false,f=()=>{})=>{
 // Exportar
 module.exports = {
     app: app, // Objeto Principal
+    router: Router,
     run: serverRun,
-    port: port
+    port: port,
+    ip: ip,
+    base64: require('./__bs64.js'),
+    uuid: require('uuid'), // Require ID Unica
+    database: { 
+        nedb: require('nedb'),
+        users: null
+    }
 }

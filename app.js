@@ -6,7 +6,7 @@ const {
 // -------------------------------
 const path = require('node:path')
 const bin  = {
-	server: require('./bin/local.js')
+	server: require('./server.js')
 }
 
 function createWindow() {
@@ -21,7 +21,7 @@ function createWindow() {
 	})
 
 	// and load the index.html of the app.
-	mainWindow.loadURL('http://192.168.0.110:3000')
+	mainWindow.loadURL('http://192.168.0.110:8080/')
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
@@ -31,8 +31,9 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-	bin.server.run() // Correr Servidor
-
+	// Correr Servidor
+	bin.server()
+	// Crear ventana 
 	createWindow()
 
 	app.on('activate', function () {
