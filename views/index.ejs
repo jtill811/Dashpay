@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('./resource/headerResource') %>
+    <!-- Title -->
+    <title><%= render.dynamicTitle %></title>
+</head>
+<body>
+    <%  if (render.session != true) { 
+            render.loggingMode = true
+    %>
+        <%- include('./resource/setLoginMode') %>
+    <% } else {
+        
+    } %>
+</body>
+</html>

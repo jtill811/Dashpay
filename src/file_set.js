@@ -3,5 +3,5 @@ import { fileURLToPath } from 'url';
 // Exportar
 const __filename = fileURLToPath(import.meta.url); 
 const __dirname = path.dirname(__filename);
-
+// Importar modulo 
 export default __dirname
