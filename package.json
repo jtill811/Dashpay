@@ -1,30 +1,18 @@
 {
-  "name": "Dashpay",
+  "name": "dashpay",
   "version": "1.0.0",
-  "description": "Ecosystem autonomo de QR",
-  "main": "main.js",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "electron app.js",
-    "test": "nodemon test.js"
+    "test": "nodemon index.js"
   },
-  "repository": "https://github.com/jtill811/Dashpay.git",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
-  ],
-  "author": "jtiller811",
+  "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^30.0.3",
-    "nodemon": "^3.1.0"
-  },
   "dependencies": {
-    "express": "^4.19.2",
-    "nedb": "^1.8.0",
-    "qrcode": "^1.5.3",
-    "uuid": "^9.0.1"
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.2"
   }
 }

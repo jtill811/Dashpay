@@ -1,1 +1,0 @@
-{"version":3,"sources":["scss\\index.scss"],"names":[],"mappings":"AAEA;EACI,SAAA;EACA,UAAA;EACA,sBAAA","file":"index.css","sourceRoot":"..\\..\\private","sourcesContent":["@import url('./components/@metaprocess.scss');\r\n\r\n*{\r\n    margin: 0;\r\n    padding: 0;\r\n    box-sizing: border-box;\r\n}\r\n\r\n"]}
