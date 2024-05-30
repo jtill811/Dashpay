@@ -7,13 +7,15 @@
     <!-- Title -->
     <title><%= render.dynamicTitle %></title>
 </head>
-<body>
+<body class="fx-gradient-animated">
     <%  if (render.session != true) { 
             render.loggingMode = true
     %>
         <%- include('./resource/setLoginMode') %>
+
     <% } else {
         
     } %>
+
 </body>
 </html>

@@ -12,7 +12,8 @@ import { fileURLToPath } from 'url';
  */
 function main(route,r,dir=path.dirname(fileURLToPath(import.meta.url))) {
     // Definir variable de acceso 
-    let preficDir = dir.replace('src','templates/')
+    let preficDir   = dir.replace('src','templates/'),
+        dataSession = Object
     /**
      *  Rutas estaticas
      */
@@ -35,8 +36,14 @@ function main(route,r,dir=path.dirname(fileURLToPath(import.meta.url))) {
      * 
      */
     route.post('/verify-user',(req,res)=>{
-        res.send({"response":true})
-    })  
+        // Esto va referido a la parte de login
+        // Confirmar y dar acceso main de la app
+        res.send(req.body)
+    });  
+    route.post('/add-user',(req,res)=>{
+        // Añadir nuevo usuario en la base de datos
+        res.send(req.body)
+    });
 }
 
 export default main;

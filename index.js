@@ -25,6 +25,8 @@ var server = {
 server.app.set('view engine', 'ejs');
 server.app.set('templates', path.join(__dirname, 'templates'));
 // Definir motor de API
+server.app.use(express.json())
+express.urlencoded({extended: false})
 server.app.use(express.static(__dirname + '/public'));
 // Rutas 
 Routes(server.app,server.render)

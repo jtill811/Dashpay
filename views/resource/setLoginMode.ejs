@@ -1,376 +1,131 @@
-<div class="container">
+<form>
     <!-- Formulario de Inico de Sesion  -->
-    <div class="wrapper fadeInDown" id="log-in">
-            <div id="formContent">
-                <!-- Icon -->
-                <div class="fadeIn first">
-                    <br>
-                    <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path style="fill: #39ace7;" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                    </svg>       
+    <div class="p-4 d-flex justify-content-center align-items-center" id="log-in">
+        <div class="card text-center p-4">
+            <form class="card-body" id="formulario-login">
+                <h3 class="mb-4">Iniciar Sesion</h3>
+                <div data-mdb-input-init class="form-outline md-form mb-3">
+                    <label for="nickname-0" class="form-label ml-label text-muted">Usuario</label>
+                    <input type="text" id="nickname-0" class="form-control" name="inp-name" placeholder="Nick4302" required>
                 </div>
-                <!-- Login Form -->
-                <form>
-                    <div class="form-control">
-                        <input type="text" value=""  id="login" class="fadeIn second" name="inp-name" placeholder="login" required/>
+                <div data-mdb-input-init class="form-outline md-form mb-4">
+                    <label for="pass-0" class="form-label ml-label text-muted">Contraseña</label>
+                    <input type="password" id="pass-0" class="form-control" name="inp-password" required>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="change" id="view-pass">
+                        <label class="form-check-label text-muted fz-1" for="view-pass">Check me out</label>
                     </div>
-                    <div class="form-control">
-                        <input type="password" value="" id="password" class="fadeIn third" name="inp-password" required/>
-                    </div>
-                    <div>
-                        <input type="checkbox" name="view-password" id="view-pass"><p>Desea ver su contraseña?</p>
-                    </div>
-                    <button type="submit" class="fadeIn fourth" id="btn-submit-log-in">Iniciar Sesion</button>
-                </form>
-                <!-- Remind Passowrd -->
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary btn-block mb-4" id="btn-submit-log-in">Iniciar
+                        sesión</button>
+                </div>
                 <div id="formFooter">
                     <a class="underlineHover" id="btn-change-view" href="#sign-up">Registrarse</a>
                 </div>
-            </div>
+            </form>
+        </div>
     </div>
     <!-- ./Formulario de Inico de Sesion  -->
+</form>
+<form>
     <!-- Formulario de registro  -->
-    <div class="wrapper fadeInDown" id="sign-up" hidden>
-            <div id="formContent">
-                <!-- Icon -->
-                <div class="fadeIn first">
-                    <br>
-                    <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                        <path style="fill: #39ace7;" d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-                    </svg>       
-                </div>
+    <div class="p-4 vh-100 d-flex d-flex justify-content-center vh-100" id="sign-up" hidden>
+        <div class="p-5 card text-center">
+            <form class="card-body" id="formulario-login">
+                <h3 class="mb-4">Iniciar Sesion</h3>
                 <!-- Login Form -->
-                <form>
-                    <div class="form-control">
-                        <input type="text" id="login2" class="fadeIn second" name="inp-name" placeholder="josh1234" required/>
+                <div class="form-group md-form mb-3">
+                    <label for="correo" class="ml-label form-text text-muted">Usuario</label>
+                    <input type="text" id="nickname-1" class="form-control" name="inp-name" placeholder="josh1234"
+                        required>
+                </div>
+                <div class="md-form mb-4">
+                    <label class="ml-label form-text text-muted">Nombre</label>    
+                    <input type="text" id="name-1" class="form-control" name="inp-name" placeholder="josh1234" required />
+                </div>
+                <div class="md-form mb-4">
+                    <label class="ml-label form-text text-muted">Cedula</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">C-I</span>
+                        <input type="number" id="ci-1" class="fadeIn second" name="inp-name" placeholder="josh1234" required />
                     </div>
-                    <div class="form-control">
-                        <input type="password" id="password2" class="fadeIn third" name="inp-password" required/>
+                </div>
+                <div class="md-form mb-4">
+                    <label class="ml-label form-text text-muted">Contraseña</label>
+                    <input type="password" id="pass-1" class="form-control" name="inp-password" required/>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="change" id="view-pass2">
+                        <label class="form-check-label " for="view-pass2">mirar contraseña</label>
                     </div>
-                    <div style="display: inline-block;">
-                        <span>
-                            <input type="checkbox" name="view-password" id="view-pass2">
-                            Desea ver su contraseña?
-                        </span>
-                    </div>
-                    <button type="submit" class="fadeIn fourth" id="btn-submit-sign-up">Registrar Usuario</button>
-                </form>
+                </div>
+                <div class="md-form mb-4">
+                    <label class="ml-label form-text text-muted">Contraseña Confirmar</label>
+                    <input type="password" id="pass-confirm" class="form-control" name="inp-password" required/>
+                </div>
+                <button type="submit"  class="btn btn-secundary btn-block mb-4" id="btn-submit-sign-up" required>Registrar Usuario</button>
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
                     <a class="underlineHover" id="btn-change-view2" href="#log-in">Iniciar sesion</a>
                 </div>
-            </div>
+            </form>
+        </div>
     </div>
     <!-- ./Formulario de registro  -->
-</div>
+</form>
 <script type="text/javascript">
     // Crear evento de Switch visibilidad 1
-    document.getElementById('view-pass').addEventListener('click',(e)=>{
+    document.getElementById('view-pass').addEventListener('click', (e) => {
         let hiddenPassword = false,
-            targetInput    = document.getElementById('password'),
+            targetInput = document.getElementById('pass-0'),
             // Definir tipo 
             typeHTML = targetInput.getAttribute('type') === 'password' ? 'text' : 'password';
         // Reset Type data 
-        targetInput.setAttribute('type',typeHTML);
-    },false);
+        targetInput.setAttribute('type', typeHTML);
+    }, false);
     // Crear evento de Switch visibilidad 2
-    document.getElementById('view-pass2').addEventListener('click',(e)=>{
+    document.getElementById('view-pass2').addEventListener('click', (e) => {
         let hiddenPassword = false,
-            targetInput    = document.getElementById('password2'),
+            targetInput = document.getElementById('pass-1'),
             // Definir tipo 
             typeHTML = targetInput.getAttribute('type') === 'password' ? 'text' : 'password';
         // Reset Type data 
-        targetInput.setAttribute('type',typeHTML);
-    },false);
+        targetInput.setAttribute('type', typeHTML);
+    }, false);
     // Cambiar vista Sign-up
-    document.querySelector('#btn-change-view').addEventListener('click',(e)=>{
+    document.querySelector('#btn-change-view').addEventListener('click', (e) => {
         console.log('click')
         e.preventDefault();
         // Escribir en documento 
-        let target  = document.querySelector('#sign-up'),
-            dir     = document.querySelector('#log-in');
+        let target = document.querySelector('#sign-up'),
+            dir = document.querySelector('#log-in');
         // Condicional 
-        if(target.hasAttribute('hidden')){
+        if (target.hasAttribute('hidden')) {
             // Debug
             // console.log("Checked")
             // Cambiar atributos
             target.removeAttribute('hidden');
-            dir.setAttribute('hidden','');
+            dir.setAttribute('hidden', '');
         } else {
             console.log("ERROR IN CHANGE CONSOLE");
         }
     })
     // Cambiar a log-in
-    document.querySelector('#btn-change-view2').addEventListener('click',(e)=>{
+    document.querySelector('#btn-change-view2').addEventListener('click', (e) => {
         console.log('click')
         e.preventDefault();
         // Escribir en documento 
-        let target  = document.querySelector('#log-in'),
-            dir     = document.querySelector('#sign-up');
+        let target = document.querySelector('#log-in'),
+            dir = document.querySelector('#sign-up');
         // Condicional 
-        if(target.hasAttribute('hidden')){
+        if (target.hasAttribute('hidden')) {
             // Debug
             // console.log("Checked")
             // Cambiar atributos
             target.removeAttribute('hidden');
-            dir.setAttribute('hidden','');
+            dir.setAttribute('hidden', '');
         } else {
             console.log("ERROR IN CHANGE CONSOLE")
         }
     })
 </script>
-<style rel="stylesheet">
-    /* STRUCTURE */
-    .wrapper {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        min-height: 100%;
-        padding: 20px;
-    }
-    #formContent {
-        -webkit-border-radius: 10px 10px 10px 10px;
-        border-radius: 10px 10px 10px 10px;
-        background: #fff;
-        padding: 30px;
-        width: 90%;
-        max-width: 450px;
-        position: relative;
-        padding: 0px;
-        text-align: center;
-        margin-top: 10%;
-    }
-
-    #formFooter {
-        background-color: #f6f6f6;
-        padding: 25px;
-        text-align: center;
-        -webkit-border-radius: 0 0 5px 5px;
-        border-radius: 0 0 5px 5px;
-    }
-    /* TABS */
-    h2.inactive {
-        color: #cccccc;
-    }
-
-    h2.active {
-        color: #0d0d0d;
-        border-bottom: 2px solid #5fbae9;
-    }
-
-    /* FORM TYPOGRAPHY*/
-    input[type=button],
-    button,
-    input{
-        background-color: #56baed;
-        border: none;
-        color: white;
-        padding: 15px 80px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: 13px;
-        -webkit-border-radius: 5px 5px 5px 5px;
-        box-shadow: none;
-        border-radius: 5px 5px 5px 5px;
-        margin: 5px 20px 40px 20px;
-        -webkit-transition: all 0.3s ease-in-out;
-        -moz-transition: all 0.3s ease-in-out;
-        -ms-transition: all 0.3s ease-in-out;
-        -o-transition: all 0.3s ease-in-out;
-        transition: all 0.3s ease-in-out;
-    }
-
-    input[type=button]:hover,
-    button:hover,
-    input:hover {
-        background-color: #39ace7;
-    }
-
-    button:active,
-    button:active,
-    input:active {
-        -moz-transform: scale(0.95);
-        -webkit-transform: scale(0.95);
-        -o-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-        transform: scale(0.95);
-    }
-
-    input{
-        background-color: #ffffff;
-        border: none; /* RESET BORDER */
-        color: #0d0d0d;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 5px;
-        width: 85%;
-        border: 2px solid #f6f6f6;
-        -webkit-transition: all 0.5s ease-in-out;
-        -moz-transition: all 0.5s ease-in-out;
-        -ms-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
-        transition: all 0.5s ease-in-out;
-        -webkit-border-radius: 5px 5px 5px 5px;
-        border-radius: 5px 5px 5px 5px;
-    }
-
-    input:focus {
-        background-color: #fff;
-        border-bottom: 2px solid #5fbae9;
-    }
-
-    input:placeholder {
-        color: #cccccc;
-    }
-
-    .form-control{
-        border: none;
-    }
-
-
-    /* ANIMATIONS */
-
-    /* Simple CSS3 Fade-in-down Animation */
-    .fadeInDown {
-        -webkit-animation-name: fadeInDown;
-        animation-name: fadeInDown;
-        -webkit-animation-duration: 1s;
-        animation-duration: 1s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-    }
-
-    @-webkit-keyframes fadeInDown {
-        0% {
-            opacity: 0;
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-        }
-
-        100% {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    @keyframes fadeInDown {
-        0% {
-            opacity: 0;
-            -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0);
-        }
-
-        100% {
-            opacity: 1;
-            -webkit-transform: none;
-            transform: none;
-        }
-    }
-
-    /* Simple CSS3 Fade-in Animation */
-    @-webkit-keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @-moz-keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-    /* Crear Animaicon  */
-    .fadeIn {
-        opacity: 0;
-        -webkit-animation: fadeIn ease-in 1;
-        -moz-animation: fadeIn ease-in 1;
-        animation: fadeIn ease-in 1;
-
-        -webkit-animation-fill-mode: forwards;
-        -moz-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-
-        -webkit-animation-duration: 1s;
-        -moz-animation-duration: 1s;
-        animation-duration: 1s;
-    }
-
-    .fadeIn.first {
-        -webkit-animation-delay: 0.4s;
-        -moz-animation-delay: 0.4s;
-        animation-delay: 0.4s;
-    }
-
-    .fadeIn.second {
-        -webkit-animation-delay: 0.6s;
-        -moz-animation-delay: 0.6s;
-        animation-delay: 0.6s;
-    }
-
-    .fadeIn.third {
-        -webkit-animation-delay: 0.8s;
-        -moz-animation-delay: 0.8s;
-        animation-delay: 0.8s;
-    }
-
-    .fadeIn.fourth {
-        -webkit-animation-delay: 1s;
-        -moz-animation-delay: 1s;
-        animation-delay: 1s;
-    }
-
-    /* Simple CSS3 Fade-in Animation */
-    .underlineHover:after {
-        display: block;
-        left: 0;
-        bottom: -15px;
-        width: 0;
-        height: 2px;
-        background-color: #56baed;
-        content: "";
-        transition: width 0.2s;
-    }
-    .underlineHover:hover{
-        text-decoration: none;
-        color: #5fbae9;
-    }
-    .underlineHover:hover:after {
-        width: 100%;
-    }
-    /* OTHERS */
-    *:focus {
-        outline: none;
-    }
-    #icon {
-        width: 10%;
-        color: #56baed;
-    }
-</style>
