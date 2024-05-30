@@ -7,15 +7,21 @@
     <!-- Title -->
     <title><%= render.dynamicTitle %></title>
 </head>
-<body class="fx-gradient-animated">
+<body>
     <%  if (render.session != true) { 
             render.loggingMode = true
     %>
         <%- include('./resource/setLoginMode') %>
-
-    <% } else {
-        
+    <% } else { 
+        // --------------------
+        if (render.Storage !== null) {
+            // Key exists and data is stored in 'storedValue'
+            console.log('Data found:', render.Storage); %>
+            <%- include('./resource/homepage') %>
+    <% 
+    } else {
+            window.location.href = '/'
+        }
     } %>
-
 </body>
 </html>

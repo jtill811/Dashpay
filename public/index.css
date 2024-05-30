@@ -3,9 +3,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* Definir nuevas entradas de login  */
 input[type="text"],
 input[type="password"]{
     text-align: left;
+}
+.reboot-for-login form input[type="text"],
+.reboot-for-login form input[type="password"]{
+    border: none;
+    border-bottom: 2px lightskyblue solid;
+}
+.form-control:focus {
+    outline: none;
 }
 /***
 *

@@ -1,8 +1,8 @@
-<form>
+<form id="form-status" logging-mode>
     <!-- Formulario de Inico de Sesion  -->
     <div class="p-4 d-flex justify-content-center align-items-center" id="log-in">
         <div class="card text-center p-4">
-            <form class="card-body" id="formulario-login">
+            <form class="card-body reboot-for-login" id="formulario-login">
                 <h3 class="mb-4">Iniciar Sesion</h3>
                 <div data-mdb-input-init class="form-outline md-form mb-3">
                     <label for="nickname-0" class="form-label ml-label text-muted">Usuario</label>
@@ -27,16 +27,14 @@
         </div>
     </div>
     <!-- ./Formulario de Inico de Sesion  -->
-</form>
-<form>
     <!-- Formulario de registro  -->
     <div class="p-4 vh-100 d-flex d-flex justify-content-center vh-100" id="sign-up" hidden>
         <div class="p-5 card text-center">
-            <form class="card-body" id="formulario-login">
+            <form class="card-body reboot-for-login" id="formulario-login">
                 <h3 class="mb-4">Iniciar Sesion</h3>
                 <!-- Login Form -->
                 <div class="form-group md-form mb-3">
-                    <label for="correo" class="ml-label form-text text-muted">Usuario</label>
+                    <label for="nickname-1" class="ml-label form-text text-muted">Usuario</label>
                     <input type="text" id="nickname-1" class="form-control" name="inp-name" placeholder="josh1234"
                         required>
                 </div>
@@ -74,7 +72,11 @@
     <!-- ./Formulario de registro  -->
 </form>
 <script type="text/javascript">
-    // Crear evento de Switch visibilidad 1
+    // Al iniciar agregar animacion de fondo
+    document.addEventListener('load',(e)=>{
+        document.querySelector('body').setAttribute('class','fx-gradient-animation')
+    })
+    // Crear evento de Switch visibilidad 1 en el FORM
     document.getElementById('view-pass').addEventListener('click', (e) => {
         let hiddenPassword = false,
             targetInput = document.getElementById('pass-0'),
@@ -83,7 +85,7 @@
         // Reset Type data 
         targetInput.setAttribute('type', typeHTML);
     }, false);
-    // Crear evento de Switch visibilidad 2
+    // Crear evento de Switch visibilidad 2 en el FORM
     document.getElementById('view-pass2').addEventListener('click', (e) => {
         let hiddenPassword = false,
             targetInput = document.getElementById('pass-1'),
@@ -92,9 +94,13 @@
         // Reset Type data 
         targetInput.setAttribute('type', typeHTML);
     }, false);
-    // Cambiar vista Sign-up
+    /*
+    * Cambiar vista Sign-up
+    *
+    * 
+    */
     document.querySelector('#btn-change-view').addEventListener('click', (e) => {
-        console.log('click')
+        // console.log('click')
         e.preventDefault();
         // Escribir en documento 
         let target = document.querySelector('#sign-up'),
@@ -112,7 +118,7 @@
     })
     // Cambiar a log-in
     document.querySelector('#btn-change-view2').addEventListener('click', (e) => {
-        console.log('click')
+        // console.log('click')
         e.preventDefault();
         // Escribir en documento 
         let target = document.querySelector('#log-in'),
@@ -129,3 +135,5 @@
         }
     })
 </script>
+<script defer type="text/javascript" src="/formx.js"></script>
+
