@@ -26,7 +26,7 @@ if(document.querySelector('#form-status').hasAttribute('logging-mode')){
                     alert("Este usuario no ha sido Registrado")
                 }else {
                     // Iniciar sesion 
-                    alert("Ha inicado session")
+                    // alert("Ha inicado session")
                     // console.log(data_)
                     if(!data_.error){
                         // Cambiar de ventana 
@@ -42,6 +42,12 @@ if(document.querySelector('#form-status').hasAttribute('logging-mode')){
         // Enviar al servidor 
         xhttp.send(JSON.stringify(form))
     }, false);
+    /***
+     * 
+     *
+     * Registrar usuario
+     * 
+     */
     document.querySelector('#btn-submit-sign-up').addEventListener('click', (e) => {
         e.preventDefault();
         // Cargar datos
@@ -52,20 +58,25 @@ if(document.querySelector('#form-status').hasAttribute('logging-mode')){
                 "pass":     document.getElementById('pass-1').value // Este se verifica su exactitudantes de enviar
             },
             xhttp = new XMLHttpRequest();
-        // Abrir peticion
-        xhttp.open("POST", "/verify-user", true)
-        // Procesar
-        xhttp.setRequestHeader('Content-Type','application/json')
-        // Al cargar los datos reenviados
-        xhttp.onload = function(){
-            if(this.status === 200){
-                const data_ = JSON.parse(xhttp.responseText)
-                console.log(data_)
-            } else{
-                console.error('Error: %s', xhttp.statusText)
+        // Confirmar la contraseña
+        if(form['pass'] == document.getElementById('pass-confirm').value){
+            // Abrir peticion
+            xhttp.open("POST", "/verify-user", true)
+            // Procesar
+            xhttp.setRequestHeader('Content-Type','application/json')
+            // Al cargar los datos reenviados
+            xhttp.onload = function(){
+                if(this.status === 200){
+                    const data_ = JSON.parse(xhttp.responseText)
+                    console.log(data_)
+                } else{
+                    console.error('Error: %s', xhttp.statusText)
+                }
             }
+            // Enviar al servidor 
+            xhttp.send(JSON.stringify(form))
+        }else{
+            
         }
-        // Enviar al servidor 
-        xhttp.send(JSON.stringify(form))
     }, false);
 }

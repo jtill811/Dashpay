@@ -1,7 +1,10 @@
 import path from 'path'
-import { stringify } from 'querystring';
 import { fileURLToPath } from 'url';
+
+import uuid from 'uuid'; // Unique Id Library
+// Exportar
 /**
+ * 
  * 
  * Para metros para la creacion de rutas dinamicas
  * solo de uso especializado para mandar rutas dinamicas y estaticas
@@ -10,10 +13,7 @@ import { fileURLToPath } from 'url';
  * @param {Render::HTMLMotorObject} r 
  *
  */
-function main(route,r,dir=path.dirname(fileURLToPath(import.meta.url))) {
-    // Definir variable de acceso 
-    let preficDir   = dir.replace('src','templates/'),
-        dataSession = Object
+function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url))) {
     /**
      *  Rutas estaticas
      */
@@ -48,36 +48,61 @@ function main(route,r,dir=path.dirname(fileURLToPath(import.meta.url))) {
      * 
      */
     route.post('/add-user',(req,res)=>{
+        // Añadir datos a base de datos
+        database.prepare(
+            'INSERT INTO users * VALUES (?,?,?,?,?)',
+            [uuid.v4(),req.body],
+            (err)=>{
+
+            })
         // Añadir nuevo usuario en la base de datos
         res.send(req.body)
     });
     route.post('/verify-user',(req,res)=>{
-        const session = {
-            nickname: "jtiller811",
-            password: "12345678"
-        };
-        // Verificar nombre
-        if(session.nickname == req.body.nickname && session.password == req.body.pass){
-            console.log("Acceso consedido desde log-in");
-            // Cambiar estado del render   
-            r.session       = true
-            r.loggingMode   = false 
-            // Renderizar titulo dinamico
-            r.dynamicTitle  = "Welcome, " + req.body.nickname; 
-            // Añadir a Storage
-            r.Storage = {
-                nickname: req.body.nickname,
-                password: req.body.password,
-                error: false
-            };  
-            // Esto va referido a la parte de login
-            // Confirmar y dar acceso main de la app
-            res.send({data: req.body,error: false});
-        }else{
-            // Enviar error 
-            res.send({error: true});
-        }
+        // GET ALL DATABASE
+        // Obtener toda la base de datos 
+        database.all('SELECT * FROM users', (err, rows) => {
+            // Carga la base de datos
+            if (err) {
+                console.error('Error fetching users:', err);
+            } else if (rows.length === 0) {
+                console.log('No users found');
+                res.send({error: true, message: 'No users found'})
+            } else {
+                // Aqui se nesecita llamar a la base de datos y regredar un archivo JSON
+                const session = rows;
+                // Imprimir en consola 
+                // console.log('Users (JSON):', session);
+                // Verificar Array
+                for (let i = 0; i < session.length; i++) {
+                    const e = session[i];
+                    // console.log(e) // Mostrar tipo de dato de E
+                    // Verificar Existencia
+                    if(e.nickname == req.body.nickname && e.password == req.body.pass){
+                        // console.log("Acceso consedido desde log-in"); // Entra en verificacion
+                        // Cambiar estado del render   
+                        r.session       = true
+                        r.loggingMode   = false 
+                        // Renderizar titulo dinamico
+                        r.dynamicTitle  = "Welcome, " + req.body.nickname;  // Cambia el titulo
+                        // Añadir a Storage
+                        r.Storage = {
+                            nickname: req.body.nickname,
+                            password: req.body.pass,
+                            error: false
+                        };  
+                        // Esto va referido a la parte de login
+                        // Confirmar y dar acceso main de la app
+                        res.send(JSON.stringify({data: req.body,error: false}));
+                    }else{
+                        // Enviar error 
+                        res.send({error: true});
+                    }
+                } // End-For
+            }
+        });
     });  
+    // Cerrar
     route.post('/out-log',(req,res)=>{
         // Finalizar Session
         r.session       = false 
