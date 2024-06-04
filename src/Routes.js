@@ -1,7 +1,7 @@
 import path from 'path'
 import { fileURLToPath } from 'url';
 
-import uuid from 'uuid'; // Unique Id Library
+import { v4 as uuidv4 } from 'uuid';
 // Exportar
 /**
  * 
@@ -49,15 +49,58 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
      */
     route.post('/add-user',(req,res)=>{
         // Añadir datos a base de datos
-        database.prepare(
-            'INSERT INTO users * VALUES (?,?,?,?,?)',
-            [uuid.v4(),req.body],
-            (err)=>{
+        const dbInsertInto = (compare=null)=>{
+            let q = [req.body.nickname,req.body.name,parseInt(req.body.ci),req.body.pass],
+                aa = false;
+            // Empezar a comparar
+            if(compare!=null){
+                console.log('Realizar comparacion')
+                // Enviar a bucle
+                for(let i = 0;i < compare.length; i++){
+                    // Definir comparativa
+                    let e = compare[i]; // Obtener Objeto de forma singular
+                    // Condicional de comprobacion 
+                    if(e.nickname == req.body.nickname){
+                        // Este dato ya existe
+                        aa = true
+                        // Enviar
+                        console.log("67 | usuario existente")
+                        // ---------------------------------------------------------------------
+                    } else if(i === compare.length - 1){
+                        console.log('70 | Ultimo verificacion');
+                    }
+                };
+                // Verificar si
+                if(!aa){ // True
+                    console.log("75 | Usuario no existe: ",aa);
+                    // Relizar agregar a usuario
+                    
+                }
 
-            })
-        // Añadir nuevo usuario en la base de datos
-        res.send(req.body)
+            } else{
+                
+            }
+        }
+        /***
+         * 
+         * Cargar todos loas datos de la base de datos
+         * para realizar comparacion y insertar en base de datos
+         * 
+         */
+        database.all('SELECT * FROM users', (err, rows) => {
+            // Carga la base de datos
+            if (err) {
+                console.error('Error fetching users:', err);
+            } else if (rows.length === 0) {
+                // console.log('No users found');
+                res.send({error: true, showMessageError: 'No users found'})
+            } else {
+                // Aqui se nesecita llamar a la base de datos y regredar un archivo JSON
+                dbInsertInto(rows)
+            }
+        });
     });
+
     route.post('/verify-user',(req,res)=>{
         // GET ALL DATABASE
         // Obtener toda la base de datos 
@@ -93,7 +136,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
                         };  
                         // Esto va referido a la parte de login
                         // Confirmar y dar acceso main de la app
-                        res.send(JSON.stringify({data: req.body,error: false}));
+                        res.send(JSON.stringify({data: r.Storage,error: false}));
                     }else{
                         // Enviar error 
                         res.send({error: true});
@@ -102,6 +145,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
             }
         });
     });  
+
     // Cerrar
     route.post('/out-log',(req,res)=>{
         // Finalizar Session

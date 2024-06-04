@@ -61,14 +61,23 @@ if(document.querySelector('#form-status').hasAttribute('logging-mode')){
         // Confirmar la contraseña
         if(form['pass'] == document.getElementById('pass-confirm').value){
             // Abrir peticion
-            xhttp.open("POST", "/verify-user", true)
+            xhttp.open("POST", "/add-user", true)
             // Procesar
             xhttp.setRequestHeader('Content-Type','application/json')
             // Al cargar los datos reenviados
             xhttp.onload = function(){
+                // Verificar estatus en Respuesta 
                 if(this.status === 200){
+                    // Convertir JSON en Object
                     const data_ = JSON.parse(xhttp.responseText)
-                    console.log(data_)
+                    // Usuario agregado con exito
+                    if(data_.error){ // En caso de que sea TRUE
+                        alert(data_.showMessageError)
+                    }else{
+                        alert('Usuario registrado!')
+                    }
+                    // recargar ventana
+                    // console.log(data_)
                 } else{
                     console.error('Error: %s', xhttp.statusText)
                 }
@@ -76,7 +85,8 @@ if(document.querySelector('#form-status').hasAttribute('logging-mode')){
             // Enviar al servidor 
             xhttp.send(JSON.stringify(form))
         }else{
-            
+            // Si contraseña son distintas 
+            alert("La contraseña no coincide");
         }
     }, false);
 }
