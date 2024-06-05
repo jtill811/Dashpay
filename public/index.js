@@ -1,3 +1,8 @@
+/**
+ * 
+ * Cerrar Sesion
+ * 
+ */
 const onClickLogOut = () => {
     // Cerrar estado de session
     xhttp = new XMLHttpRequest();

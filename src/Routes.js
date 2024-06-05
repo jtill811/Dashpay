@@ -1,6 +1,7 @@
-import { Console } from 'console';
 import path from 'path'
 import { fileURLToPath } from 'url';
+
+import crypto from './compact.js';
 /**
  * 
  * 
@@ -48,7 +49,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
     route.post('/add-user',(req,res)=>{
         // Añadir datos a base de datos
         const dbInsertInto = (compare=null)=>{
-            let q = [req.body.nickname,req.body.name,parseInt(req.body.ci),req.body.pass],
+            let q = [req.body.nickname, req.body.name, parseInt(req.body.ci), crypto.encryptToAES(req.body.pass).toString()],
                 aa = false;
             // Empezar a comparar
             if(compare!=null){
@@ -70,13 +71,13 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
                 if(!aa){ // False
                     console.log("75 | Usuario no existe: ",aa);
                     // Relizar agregar a usuario
-                    database.run('INSERT INTO users VALUES(?,?,?,?)',q,(err)=>{
-                        if(!err){ // False
+                    database.run('INSERT INTO users (nickname,name,ci,password) VALUES(?,?,?,?)',q,(err)=>{
+                        if(err){ // False
                             console.error(err)
                         } else{
                             res.send(JSON.stringify({i_status: true}))
                             //  Usuario en Base de datos
-                            console.log("Insertado en Base de datos")
+                            console.log("Insertado en Base de datos", q)
                         }
                     })
                 }
@@ -93,10 +94,10 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
             // Carga la base de datos
             if (err) {
                 console.error('Error fetching users:', err);
-            } else if (rows.length === 0) {
+            }else if (rows.length === 0) {
                 // console.log('No users found');
                 res.send({error: true, showMessageError: 'No users found'})
-            } else {
+            }  else {
                 // Aqui se nesecita llamar a la base de datos y regredar un archivo JSON
                 dbInsertInto(rows)
             }
@@ -124,7 +125,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
                         const e = session[i];
                         // console.log(e) // Mostrar tipo de dato de E
                         // Verificar Existencia
-                        if(e.nickname == req.body.nickname && e.password == req.body.pass){
+                        if(e.nickname == req.body.nickname && crypto.decryptToAES(e.password).toString() == req.body.pass){
                             // console.log("Acceso consedido desde log-in"); // Entra en verificacion
                             // Cambiar estado del render   
                             r.session       = true
@@ -134,7 +135,6 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
                             // Añadir a Storage
                             r.Storage = {
                                 nickname: req.body.nickname,
-                                password: req.body.pass,
                                 error: false
                             };  
                             //
