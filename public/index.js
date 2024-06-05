@@ -1,5 +1,4 @@
-
-document.querySelector('#btn-log-out').addEventListener('click',(e)=>{
+const onClickLogOut = () => {
     // Cerrar estado de session
     xhttp = new XMLHttpRequest();
     // Enviar cerrar Session
@@ -7,4 +6,4 @@ document.querySelector('#btn-log-out').addEventListener('click',(e)=>{
     xhttp.send()
     // Recargar ventana y refrescar datos
     window.location.reload();
-},false)
+}
