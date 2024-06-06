@@ -8,6 +8,7 @@ import sqlite3 from 'sqlite3';
 import express from 'express'
 // Cargar Rutas
 import Routes from './src/Routes.js'
+import Mobile from './src/RouteMobile.js'
 // Cargar Renderizados
 import Render from './src/Render.js'
 // Objeto de servidor
@@ -33,6 +34,7 @@ express.urlencoded({extended: false})
 server.app.use(express.static(__dirname + '/public'));
 // Rutas 
 Routes(server.app,server.render,server.database)
+Mobile(server.app,server.render,server.database)
 // Definir activacion de servidor 
 server.app.listen(server.config["PORT"], () => {
     console.log(`server into: localhost:${server.config["PORT"]}`)

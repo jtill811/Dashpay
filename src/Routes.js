@@ -24,6 +24,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
      */
     route.get('/',(req,res)=>{
         try{
+            // Enviar platilla al render
             res.status(200).render('index',{render:r})
         } catch(err){
             console.error(err);
@@ -53,7 +54,7 @@ function main(route,r,database,dir=path.dirname(fileURLToPath(import.meta.url)))
                 aa = false;
             // Empezar a comparar
             if(compare!=null){
-                console.log('Realizar comparacion')
+                // console.log('Realizar comparacion')
                 // Enviar a bucle
                 for(let i = 0;i < compare.length; i++){
                     // Definir comparativa
